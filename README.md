@@ -1,8 +1,11 @@
 **McIntoshControl**
+
 A rather rough and tumble but functional python program I wrote to have open loop control of my Mcintosh MC52 through the use of a ITach IP2SL Ethernet -> RS232 bridge and be able to use it with HomeAssistant through the use of the api RestCommands and HomeAssistants scripts to be accesible in the UI.
 
 
 **Rest_Command Home Assistant configuration**
+
+```
 rest_command:
   mcintosh_power_on:
     url: "http://serverIP:5001/mcintosh"
@@ -101,11 +104,11 @@ rest_command:
     headers:
       Content-Type: "application/json"
     payload: '{"command": "Unmute"}'
-
+```
 
 **HomeAssistance Scripts Configuration section:**
 
-
+```
 mcintosh_power_on:
   alias: "McIntosh Power On"
   sequence:
@@ -175,3 +178,4 @@ mcintosh_unmute:
   alias: "McIntosh Unmute"
   sequence:
     - service: rest_command.mcintosh_unmute
+```
